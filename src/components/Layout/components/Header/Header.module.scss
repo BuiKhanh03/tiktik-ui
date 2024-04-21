@@ -1,0 +1,99 @@
+.wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-btn-width: 52px;
+
+    width: 100%;
+    height: var(--default-layout-height, 60px);
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    height: 100%;
+    width: var(--default-layout-weight);
+    background-color: rgba(255, 80, 114, 1);
+    display: flex;
+    //căn giữa theo chiều dọc
+    align-items: center;
+    //căn điều các items theo chiều ngang
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+}
+
+.search {
+    position: relative;
+    width: 500px;
+    height: var(--search-height);
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    display: flex;
+    border: 1.5px solid transparent;
+
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        //dấu nhấp nháy trong ô input
+        caret-color: red;
+        background-color: transparent;
+    }
+
+    //không có chữ trong ô input thì những thuộc tính bên trong sẽ được kích hoạt ~ kichs hoạt thuộc tính cho thằng sau dấu ngã
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgb(161, 37, 62);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        top: var(--search-top-spacer);
+        //set right bằng search-btn để tính từ bên phải qua 52px
+        right: var(--search-btn-width);
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border: 1.5px solid rgba(22, 24, 35, 0.06);
+    }
+}
+
+.clear-btn,
+.loading {
+    position: absolute;
+    right: calc(var(--search-btn-width) + 16px);
+    //căn giữa chiều cao
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    width: var(--search-btn-width);
+    height: 100%;
+    background-color: rgba(22, 24, 35, -0.94);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    //style cho icon (style cho cha thì con thay đổi theo)
+    font-size: 2rem;
+    color: rgba(22, 24, 35, 0.3);
+
+    &:hover {
+        //đổi style con trỏ
+        cursor: pointer;
+        background-color: rgb(193, 58, 85, 1);
+    }
+
+    &:active {
+        background-color: rgb(193, 58, 85, 0.6);
+    }
+}
