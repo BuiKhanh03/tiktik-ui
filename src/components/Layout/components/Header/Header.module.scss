@@ -26,6 +26,11 @@
     display: flex;
 }
 
+.search,
+.search-result {
+    width: 500px;
+}
+
 .search {
     position: relative;
     width: 500px;
@@ -96,4 +101,17 @@
     &:active {
         background-color: rgb(193, 58, 85, 0.6);
     }
+}
+
+.search-result {
+    background-color: var(--primary);
+    color: var(--text-color);
+    font-size: 1.6rem;
+}
+
+.search-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    color: rgba(22, 24, 35, 0.5);
 }
