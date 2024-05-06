@@ -1,0 +1,79 @@
+.wrapper {
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 4px;
+    min-width: 90px;
+    padding: 9px 16px;
+    margin-right: 2px;
+    cursor: pointer;
+    background-color: var(--primary);
+    border: 1px solid var(--white);
+    user-select: none;
+
+    + .wrapper {
+        margin-left: 2px;
+    }
+
+    &.disabled {
+        //mất hiệu ứng chuột, clean qua thì không có hiệu ứng gì hết
+        pointer-events: none;
+        opacity: 0.1;
+    }
+}
+
+//Button types
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+.rounded {
+    border-radius: 999px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+.primary {
+    color: var(--white);
+    background-color: var(--black);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
+    }
+}
+
+.outline {
+    color: var(--white);
+    background-color: var(--primary);
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.6);
+    }
+}
+
+.text {
+    background-color: var(--primary);
+    border: none;
+    color: var(--text-color);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+//Button size
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.large {
+    padding: 14px 16px;
+    min-width: 148px;
+}
