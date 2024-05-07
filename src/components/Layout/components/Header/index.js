@@ -28,10 +28,25 @@ import Tippy from '@tippyjs/react/headless'; // different import path!
 
 const cx = classNames.bind(styles);
 
+const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+        case 'language':
+            //handle languge
+            break;
+    }
+};
+
 const MENU_ITEM = [
     {
         icon: <FontAwesomeIcon icon={faHandsAslInterpreting} />,
         title: 'Vietnamese',
+        children: {
+            title: 'Language',
+            data: [
+                { type: 'language', code: 'en', title: 'English' },
+                { type: 'language', code: 'vi', title: 'Vietnamese' },
+            ],
+        },
     },
 
     {
@@ -62,14 +77,14 @@ function Header() {
                     <img src={images.logo} alt="Tiktok"></img>
                 </div>
                 {/* Search */}
-                {/* tab không được */}
-                {/*tabIndex="-1" {...attrs}*/}
-                {/*interactive: có thể hoạt động trong tippy*/}
-                {/*visible: ẩn hiện theo mong muốn*/}
+
                 <Tippy
+                    //Lướt qua thì hiện nhưng bấm one more time sẽ biến mất
                     interactive
                     visible={searchResult.length > 0}
+                    //visible: ẩn hiện theo mong muốn
                     render={(attrs) => (
+                        // tabIndex: độ ưu tiên (0, -1)
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h4 className={cx('search-title')}>You may be like</h4>
@@ -93,18 +108,22 @@ function Header() {
                     </div>
                 </Tippy>
                 {/* _blank: new tab */}
+                {/* End Search*/}
+                {/* Button*/}
                 <div className={cx('actions')}>
                     <Button text>Upload</Button>
                     <Button primary rightIcon={<FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>}>
                         Login
                     </Button>
-
-                    <Menu items={MENU_ITEM}>
+                    {/* Menu Item*/}
+                    <Menu items={MENU_ITEM} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
                         </button>
                     </Menu>
+                    {/* End Menu Item*/}
                 </div>
+                {/* End Button*/}
             </div>
         </header>
     );
