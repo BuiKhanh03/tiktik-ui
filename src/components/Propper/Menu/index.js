@@ -44,7 +44,6 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     return (
         <Tippy
             interactive
-            visible
             delay={[0, 500]}
             placement="bottom-end"
             render={(attrs) => (
@@ -62,6 +61,8 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     </PopperWrapper>
                 </div>
             )}
+            //invoked when the tippy begins to transition out.
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>
