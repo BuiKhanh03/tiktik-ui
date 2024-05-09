@@ -8,6 +8,8 @@ import { Wrapper as PopperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
+import Image from '~/components/Image';
+import { InboxIcon, MessageIcon } from '~/components/Icons';
 //import icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -20,6 +22,13 @@ import {
     faCircleQuestion,
     faKeyboard,
     faCloudUpload,
+    faBookmark,
+    faCoins,
+    faCamera,
+    faGhost,
+    faGear,
+    faCircleHalfStroke,
+    faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 //import Headlesstippy
 //hiển thi chú thích cho các nút (You can call is tooltip)
@@ -65,6 +74,59 @@ const MENU_ITEM = [
     },
 ];
 
+const userMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'View profile',
+        to: '/@buiKhanh',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faBookmark} />,
+        title: 'Favourites',
+        to: '/@favourites',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get Coins',
+        to: '/@coins',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faCamera} />,
+        title: 'LIVE Studio',
+        to: '/@livestudoi',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faGhost} />,
+        title: 'LIVE Creator Hub',
+        to: '/@livecreatorhub',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Settings',
+        to: '/@setting',
+    },
+
+    ...MENU_ITEM,
+
+    {
+        icon: <FontAwesomeIcon icon={faCircleHalfStroke} />,
+        title: 'Dark mode',
+        to: '/@darkmode',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+        title: 'Log out',
+        to: '/logout',
+        seperate: true,
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -85,13 +147,14 @@ function Header() {
                 <HeadlessTippy
                     //Lướt qua thì hiện nhưng bấm one more time sẽ biến mất
                     interactive
-                    visible={searchResult.length > 0}
+                    //visible={searchResult.length > 0}
                     //visible: ẩn hiện theo mong muốn
                     render={(attrs) => (
                         // tabIndex: độ ưu tiên (0, -1)
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h4 className={cx('search-title')}>You may be like</h4>
+                                <AccountItem></AccountItem>
                                 <AccountItem></AccountItem>
                                 <AccountItem></AccountItem>
                             </PopperWrapper>
@@ -115,13 +178,23 @@ function Header() {
                 {/* Nếu có thì hiện thông tin người dùng, nếu không thì hiện chỗ đăng nhập */}
                 <div className={cx('action')}>
                     {currentUser ? (
-                        <>
-                            <Tippy trigger="click" content="Upload File" placement="left">
+                        <div className={cx('action-icon')}>
+                            <Tippy content="Upload File">
                                 <button className={cx('action-btn')}>
                                     <FontAwesomeIcon icon={faCloudUpload}></FontAwesomeIcon>
                                 </button>
                             </Tippy>
-                        </>
+                            <Tippy content="Message">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon></MessageIcon>
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon></InboxIcon>
+                                </button>
+                            </Tippy>
+                        </div>
                     ) : (
                         //_blank: new tab
                         // End Search
@@ -136,13 +209,14 @@ function Header() {
                         </>
                         // End Button
                     )}
-                    <Menu items={MENU_ITEM} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/e3a42949b39035e8e5fc3fe718b582d2.jpeg?lk3s=a5d48078&x-expires=1715245200&x-signature=6Id%2BMON0M6bju%2BUTQ7SpLlku2uo%3D"
                                 className={cx('user-avatar')}
                                 alt="Bui Duy Khanh"
-                            ></img>
+                                fallback=""
+                            ></Image>
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>

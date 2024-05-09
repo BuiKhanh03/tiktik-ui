@@ -1,10 +1,9 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --primary: rgba(255, 80, 114, 1);
     --black: #000;
-    --text-color: #333;
+    --text-color: #161823;
     --white: #fff;
 
     //Default layout
@@ -24,7 +23,7 @@ html {
 }
 
 body {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'TikTokFont', sans-serif;
     font-weight: 400;
     font-style: 1.6rem;
     line-height: 1.5;
@@ -45,12 +44,49 @@ a[href] {
     text-decoration: none;
 }
 
-//Custom tippy tooltip
-body .tippy-box {
-    border-radius: 8px;
+//Fonts embedded
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url('/assets/fonts/TikTokDisplayFont-Semibold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/fonts/TikTokFont-Bold.woff2');
     font-weight: 600;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    background-color: rgba(84, 84, 84, 0.92);
-    color: var(--white);
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/fonts/TikTokFont-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/fonts/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+
+//Custom tippy tooltip
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 550;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        background-color: var(--white);
+        color: var(--primary);
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
 }

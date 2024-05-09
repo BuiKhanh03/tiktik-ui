@@ -1,14 +1,15 @@
 .wrapper {
+    min-width: 90px;
+    margin-right: 2px;
+    padding: 9px 16px;
     font-size: 1.6rem;
     font-weight: 700;
+    font-family: 'TikTokFont', sans-serif;
     border-radius: 4px;
-    min-width: 90px;
-    padding: 9px 16px;
-    margin-right: 2px;
-    cursor: pointer;
     background-color: var(--primary);
     border: 1px solid var(--white);
     user-select: none;
+    cursor: pointer;
 
     + .wrapper {
         margin-left: 2px;

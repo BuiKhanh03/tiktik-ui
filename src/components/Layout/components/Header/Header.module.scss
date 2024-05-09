@@ -123,6 +123,11 @@
     align-items: center;
 }
 
+.action-icon {
+    display: flex;
+    align-items: cen;
+}
+
 .action-btn {
     color: var(--white);
     font-size: 2.4rem;
@@ -137,5 +142,15 @@
     margin: 0 12px;
     background-color: var(--primary);
     color: var(--text-color);
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    //The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container.
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
     cursor: pointer;
 }
