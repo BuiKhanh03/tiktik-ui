@@ -1,6 +1,7 @@
 //Hook
 import { useEffect, useState, useRef } from 'react';
 //class
+import * as searchService from '~/apiServices/searchService';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
@@ -32,18 +33,20 @@ export default function Search() {
             return;
         }
 
-        setLoading(true);
+        //setLoading(true);
 
-        //The encodeURIComponent() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchService.search(debounced);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        // setSearchResult(res.data);
+        // setLoading(false);
+
+        fetchApi();
     }, [debounced]);
 
     //Clear kết quả trong ô tìm kiếm
