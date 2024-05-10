@@ -7,7 +7,7 @@ import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless'; // different import path Tippy!
-import { faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -18,13 +18,30 @@ export default function Search() {
     const [searchResult, setSearchResult] = useState([]);
     //kiểm tra có hiện kết quả tìm kiếm hay không
     const [showResult, setShowResult] = useState(true);
+    //Loading
+    const [loading, setLoading] = useState(false);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 3000);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+
+        setLoading(true);
+
+        //The encodeURIComponent() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     //Clear kết quả trong ô tìm kiếm
     const handleClear = () => {
@@ -48,9 +65,9 @@ export default function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>You may be like</h4>
-                        <AccountItem></AccountItem>
-                        <AccountItem></AccountItem>
-                        <AccountItem></AccountItem>
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result}></AccountItem>
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -66,7 +83,7 @@ export default function Search() {
                     onChange={(e) => setSearchValue(e.target.value)}
                     onFocus={() => setShowResult(true)}
                 ></input>
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear-btn')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
                     </button>
@@ -74,7 +91,7 @@ export default function Search() {
                 {/* Clear */}
 
                 {/* Loading */}
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                 </button>
