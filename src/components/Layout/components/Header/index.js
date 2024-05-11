@@ -6,6 +6,8 @@ import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
+import { Link } from 'react-router-dom';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 //import icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -127,7 +129,9 @@ function Header() {
             <div className={cx('inner')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok"></img>
+                    <Link to={routesConfig.home}>
+                        <img src={images.logo} alt="Tiktok"></img>
+                    </Link>
                 </div>
                 {/* Search */}
 

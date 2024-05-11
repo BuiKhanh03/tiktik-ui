@@ -60,6 +60,15 @@ export default function Search() {
         setShowResult(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (searchValue.startsWith(' ') /* !searchValue.trim() và không có giá trị */) {
+            return;
+        }
+        setSearchValue(searchValue);
+    };
+
     return (
         <HeadlessTippy
             //Lướt qua thì hiện nhưng bấm one more time sẽ biến mất
@@ -84,9 +93,9 @@ export default function Search() {
                 <input
                     ref={inputRef}
                     value={searchValue}
-                    placeholder="Search account and video"
+                    placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 ></input>
                 {!!searchValue && !loading && (
@@ -98,7 +107,12 @@ export default function Search() {
 
                 {/* Loading */}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
-                <button className={cx('search-btn')}>
+                <button
+                    className={cx('search-btn')}
+                    onMouseDown={(e) => {
+                        e.preventDefault();
+                    }}
+                >
                     <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                 </button>
             </div>

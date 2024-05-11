@@ -7,6 +7,7 @@
     --white: #fff;
 
     //Default layout
+    --font-family: TikTokFont;
     --default-layout-height: 60px;
     --default-layout-weight: 1200px;
     --default-layout-horizontal-spacer: 24px;
@@ -23,7 +24,7 @@ html {
 }
 
 body {
-    font-family: 'TikTokFont', sans-serif;
+    font-family: var(--font-family), sans-serif;
     font-weight: 400;
     font-style: 1.6rem;
     line-height: 1.5;
