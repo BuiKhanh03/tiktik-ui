@@ -70,52 +70,55 @@ export default function Search() {
     };
 
     return (
-        <HeadlessTippy
-            //Lướt qua thì hiện nhưng bấm one more time sẽ biến mất
-            interactive
-            visible={showResult && searchResult.length > 0}
-            //visible: ẩn hiện theo mong muốn
-            render={(attrs) => (
-                // tabIndex: độ ưu tiên (0, -1)
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>You may be like</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result}></AccountItem>
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            //Ẩn kết quả nếu blur ra ngoài ô search
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search accounts and videos"
-                    spellCheck={false}
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                ></input>
-                {!!searchValue && !loading && (
-                    <button className={cx('clear-btn')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-                    </button>
+        //Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
+        <div>
+            <HeadlessTippy
+                //Lướt qua thì hiện nhưng bấm one more time sẽ biến mất
+                interactive
+                visible={showResult && searchResult.length > 0}
+                //visible: ẩn hiện theo mong muốn
+                render={(attrs) => (
+                    // tabIndex: độ ưu tiên (0, -1)
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>You may be like</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result}></AccountItem>
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
-                {/* Clear */}
+                //Ẩn kết quả nếu blur ra ngoài ô search
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    ></input>
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear-btn')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
+                        </button>
+                    )}
+                    {/* Clear */}
 
-                {/* Loading */}
-                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
-                <button
-                    className={cx('search-btn')}
-                    onMouseDown={(e) => {
-                        e.preventDefault();
-                    }}
-                >
-                    <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                </button>
-            </div>
-        </HeadlessTippy>
+                    {/* Loading */}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>}
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
