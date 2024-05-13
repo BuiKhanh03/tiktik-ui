@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Propper';
@@ -56,7 +57,7 @@ function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
                     <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && (
                             <Header
-                                title="Languages"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
@@ -73,5 +74,11 @@ function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
         </Tippy>
     );
 }
+
+Menu.prototype = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChange: PropTypes.func,
+};
 
 export default Menu;
