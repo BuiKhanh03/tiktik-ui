@@ -1,3 +1,8 @@
+/*use prop-types to document the intended types of properties passed to components. 
+React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, 
+and warn in development if they don’t match. */
+import propTypes from 'prop-types';
+//class
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
@@ -67,4 +72,8 @@ function Button({
     );
 }
 
+Button.propTypes = {
+    children: propTypes.node.isRequired, // Anything that can be rendered: numbers, strings, elements or an array
+    //isRequired: bắt buộc truyền
+};
 export default Button;
