@@ -42,6 +42,25 @@ function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
         });
     };
 
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack}></Header>}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
+
+    //Reset to first page
+    const handleResetMenu = () =>
+        setHistory((prev) => {
+            prev.slice(0, 1);
+        });
+
     return (
         <Tippy
             //truyền các props từ bên ngoài vào
@@ -52,23 +71,9 @@ function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
             offset={[10, 10]}
             placement="bottom-end"
             hideOnClick={false}
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            ></Header>
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
+            render={renderResult}
             //invoked when the tippy begins to transition out.
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>

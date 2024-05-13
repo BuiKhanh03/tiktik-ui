@@ -19,16 +19,16 @@ export default function Search() {
     //kiểm tra xem có kết quả tìm kiếm hay không
     const [searchResult, setSearchResult] = useState([]);
     //kiểm tra có hiện kết quả tìm kiếm hay không
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     //Loading
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -37,7 +37,7 @@ export default function Search() {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchService.search(debounced);
+            const result = await searchService.search(debouncedValue);
             setSearchResult(result);
 
             setLoading(false);
@@ -47,7 +47,7 @@ export default function Search() {
         // setLoading(false);
 
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     //Clear kết quả trong ô tìm kiếm
     const handleClear = () => {
