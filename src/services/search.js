@@ -1,5 +1,5 @@
 //Axious
-import * as request from '~/utils/request';
+import * as request from '~/utils/HttpRequest';
 
 export const search = async (q, type = 'less') => {
     try {

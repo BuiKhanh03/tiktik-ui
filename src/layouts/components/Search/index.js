@@ -1,7 +1,7 @@
 //Hook
 import { useEffect, useState, useRef } from 'react';
 //class
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/search';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';

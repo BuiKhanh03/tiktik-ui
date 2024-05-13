@@ -6,7 +6,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import { Link } from 'react-router-dom';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 //import icons
@@ -129,7 +129,7 @@ function Header() {
             <div className={cx('inner')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home}>
+                    <Link to={config.routes.home}>
                         <img src={images.logo} alt="Tiktok"></img>
                     </Link>
                 </div>
