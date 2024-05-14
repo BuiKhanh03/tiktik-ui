@@ -1,0 +1,86 @@
+.wrapper {
+    border-top: 1px solid #ccc;
+}
+
+.tippyWrapper {
+    width: 280px;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.following {
+    padding: 4px;
+}
+
+.body {
+    margin-top: 12px;
+}
+
+.statistic {
+}
+
+.value ~ .value {
+    margin-left: 20px;
+}
+.label {
+    font-size: 1.2rem;
+}
+
+.label {
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.see-more {
+    padding: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.account-item {
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+}
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.item-info {
+    flex: 1;
+    margin-left: 12px;
+}
+.item-nickname {
+    line-height: 1;
+    font-size: 1.6rem;
+    color: #161823;
+}
+
+.item-iconCheck {
+    margin-left: 4px;
+    font-size: 1.4rem;
+    color: #20d5ec;
+}
+.item-name {
+    // margin-top: 0
+    font-size: 1.2rem;
+    opacity: #161823bf;
+}

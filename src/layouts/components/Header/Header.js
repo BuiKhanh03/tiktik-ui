@@ -7,6 +7,7 @@ import Menu from '~/components/Propper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
 import config from '~/config';
+import BuiKhanhHandsome from '~/assets/images/BuiKhanhHandsome.jpg';
 import { Link } from 'react-router-dom';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 //import icons
@@ -174,7 +175,7 @@ function Header() {
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
-                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/e3a42949b39035e8e5fc3fe718b582d2.jpeg?lk3s=a5d48078&x-expires=1715245200&x-signature=6Id%2BMON0M6bju%2BUTQ7SpLlku2uo%3D"
+                                src={BuiKhanhHandsome}
                                 className={cx('user-avatar')}
                                 alt="Bui Duy Khanh"
                                 fallback=""

@@ -21,6 +21,9 @@ const defaultFn = () => {};
 
 function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
     const [history, setHistory] = useState([{ data: items }]);
+
+    console.log(history);
+
     const current = history[history.length - 1];
 
     const renderItems = () => {
@@ -58,7 +61,7 @@ function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
     //Reset to first page
     const handleResetMenu = () =>
         setHistory((prev) => {
-            prev.slice(0, 1);
+            return prev.slice(0, 1);
         });
 
     return (

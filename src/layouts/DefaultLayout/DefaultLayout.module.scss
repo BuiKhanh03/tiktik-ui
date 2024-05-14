@@ -10,11 +10,10 @@
     margin-top: var(--default-layout-height);
     padding: 0 var(--default-layout-horizontal-spacer);
     min-height: 1000px;
-    background-color: #333;
+    background-color: var(--white);
 }
 
 .content {
     //chiếm khoảng không con lại của flex
     flex: 1;
-    background-color: #333;
 }
