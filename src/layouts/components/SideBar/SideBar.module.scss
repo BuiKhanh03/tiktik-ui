@@ -7,3 +7,91 @@
     transition: background-color 200ms ease-in-out 0s;
     margin-left: -18px;
 }
+
+.suggested,
+.following,
+.discover,
+.sidebar-footer {
+    border-top: 1px solid #ccc;
+}
+
+.label {
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.see-more {
+    padding: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.log-in {
+    border-top: 1px solid #ccc;
+    margin-bottom: 16px;
+}
+
+.login-title {
+    color: rgba(22, 24, 35, 0.5);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.discover {
+    margin-bottom: 16px;
+}
+
+.discover-header {
+    padding: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.discover-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.discover-item {
+    display: flex;
+    align-items: center;
+    color: rgba(22, 24, 35, 0.75);
+    border: 1px solid rgba(22, 24, 35, 0.2);
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 4px;
+    margin: 2px;
+}
+
+.discover-icon {
+}
+.discover-title {
+}
+
+.link,
+.license {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+    color: rgba(22, 24, 35, 0.5);
+}
+.link-item {
+    margin: 0 4px;
+    font-size: 1.2rem;
+}
+
+.license {
+    display: flex;
+    align-items: center;
+}
+
+.licenseof {
+}

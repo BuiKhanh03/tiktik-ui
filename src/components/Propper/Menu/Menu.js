@@ -22,8 +22,6 @@ const defaultFn = () => {};
 function Menu({ children, items = [], onChange = defaultFn, ...passProps }) {
     const [history, setHistory] = useState([{ data: items }]);
 
-    console.log(history);
-
     const current = history[history.length - 1];
 
     const renderItems = () => {

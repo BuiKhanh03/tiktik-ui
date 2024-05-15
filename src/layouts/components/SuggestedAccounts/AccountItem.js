@@ -9,10 +9,11 @@ import { Wrapper as PopperWrapper } from '~/components/Propper';
 import Button from '~/components/Button';
 import Image from '~/components/Image';
 import BuiKhanhHandsome from '~/assets/images/BuiKhanhHandsome.jpg';
+import Menu from './Menu';
 
 const cx = classNames.bind(styles);
 
-function AccountItem({ label }) {
+function AccountItem({ label, sidebar, data, ...passProps }) {
     const renderPreview = (props) => (
         <div tabIndex="-1" {...props}>
             <PopperWrapper>
@@ -48,39 +49,14 @@ function AccountItem({ label }) {
 
     return (
         <div>
-            {label === 'Following Account' ? (
-                <div className={cx('account-item')}>
-                    <img
-                        alt="Buikhanh"
-                        src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/cd65126fd4091ef651c9a89cfdb4a05f~c5_720x720.jpeg?lk3s=a5d48078&amp;x-expires=1715828400&amp;x-signature=EBmCxxUkXDg7%2BsHKTc5QZPBzh88%3D"
-                        className={cx('avatar')}
-                    />
-                    <div className={cx('item-info')}>
-                        <p className={cx('item-nickname')}>
-                            <strong>Bui Duy khanh</strong>
-                            <FontAwesomeIcon className={cx('item-iconCheck')} icon={faCheckCircle} />
-                        </p>
-                        <p className={cx('item-name')}>BuikhanhDuy</p>
-                    </div>
-                </div>
-            ) : (
+            {label === 'Following accounts' && data.is_followed ? (
+                <Menu sidebar={sidebar} data={data} {...passProps} fallback=""></Menu>
+            ) : null}
+            {label === 'Suggested Account' ? (
                 <Tippy interactive offset={[30, 0]} delay={[800, 0]} placement="bottom" render={renderPreview}>
-                    <div className={cx('account-item')}>
-                        <img
-                            alt="Buikhanh"
-                            src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/cd65126fd4091ef651c9a89cfdb4a05f~c5_720x720.jpeg?lk3s=a5d48078&amp;x-expires=1715828400&amp;x-signature=EBmCxxUkXDg7%2BsHKTc5QZPBzh88%3D"
-                            className={cx('avatar')}
-                        />
-                        <div className={cx('item-info')}>
-                            <p className={cx('item-nickname')}>
-                                <strong>Bui Duy khanh</strong>
-                                <FontAwesomeIcon className={cx('item-iconCheck')} icon={faCheckCircle} />
-                            </p>
-                            <p className={cx('item-name')}>BuikhanhDuy</p>
-                        </div>
-                    </div>
+                    <Menu sidebar={sidebar} data={data} {...passProps}></Menu>
                 </Tippy>
-            )}
+            ) : null}
         </div>
     );
 }
