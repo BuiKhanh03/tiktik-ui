@@ -21,7 +21,7 @@ import Button from '~/components/Button';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-function SideBar() {
+function SideBar({ shrink }) {
     const currentUser = false;
 
     const [suggests, setSuggests] = useState([]);
@@ -42,7 +42,7 @@ function SideBar() {
     }, [seeAll]);
 
     return (
-        <aside className={cx('wrapper')}>
+        <aside className={cx('wrapper', { shrink: shrink })}>
             <Menu className={cx('contain')}>
                 {/* Header */}
                 <div className={cx('sidebar-header')}>
