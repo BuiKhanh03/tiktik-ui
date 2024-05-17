@@ -73,11 +73,12 @@
     align-items: flex-end;
 }
 .video-card {
-    width: 273px;
     position: relative;
+    height: 400px;
 
     .video-component {
-        height: 400px;
+        width: 100%;
+        height: 100%;
         position: relative;
         border-radius: 12px;
         object-fit: cover;
@@ -102,7 +103,7 @@
         position: absolute;
         bottom: 10px;
         left: unset;
-        right: 54px;
+        right: 16px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -139,7 +140,7 @@
         display: flex;
         position: absolute;
         top: 9px;
-        right: 56px;
+        right: 16px;
         opacity: 0;
 
         .video-report-icon {
@@ -161,6 +162,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0 8px;
     height: 238px;
 }
 

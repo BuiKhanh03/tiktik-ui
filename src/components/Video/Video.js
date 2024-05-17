@@ -64,7 +64,17 @@ function Video({ data, className }) {
                     </div>
                     <div className={cx('video')}>
                         <div className={cx('video-card')}>
-                            <video className={cx('video-component')} src={data?.file_url} ref={videoRef}></video>
+                            <video
+                                style={
+                                    data?.meta.video.resolution_x < data?.meta.video.resolution_y
+                                        ? { width: '273px' }
+                                        : { width: '463px' }
+                                }
+                                loop
+                                className={cx('video-component')}
+                                src={data?.file_url}
+                                ref={videoRef}
+                            ></video>
                             <div className={cx('video-control')} onClick={togglePlayVideo}>
                                 {playing ? <PauseIcon /> : <PlayIcon />}
                             </div>
