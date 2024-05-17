@@ -43,7 +43,7 @@ function SideBar() {
 
     return (
         <aside className={cx('wrapper')}>
-            <Menu>
+            <Menu className={cx('contain')}>
                 {/* Header */}
                 <div className={cx('sidebar-header')}>
                     <MenuItem
