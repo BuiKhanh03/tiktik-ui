@@ -411,8 +411,8 @@ export const ShareIcon = ({ width = '2.4rem', height = '2.4rem', className }) =>
                 gradientTransform="translate(11.1827 18.2553) rotate(-113.046) scale(8.93256 8.78076)"
             >
                 <stop></stop>
-                <stop offset="0.995496" stop-opacity="0.01"></stop>
-                <stop offset="1" stop-opacity="0.01"></stop>
+                <stop offset="0.995496" stopOpacity="0.01"></stop>
+                <stop offset="1" stopOpacity="0.01"></stop>
             </radialGradient>
         </defs>
     </svg>

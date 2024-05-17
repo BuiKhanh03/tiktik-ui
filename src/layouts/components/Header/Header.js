@@ -1,17 +1,20 @@
 //class
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+//import icons
+import { InboxIcon, MessageIcon } from '~/components/Icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import config from '~/config';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
-import config from '~/config';
+import { ModalContext } from '~/components/ModelContextProvider';
 import BuiKhanhHandsome from '~/assets/images/BuiKhanhHandsome.jpg';
-import { Link } from 'react-router-dom';
-import { InboxIcon, MessageIcon } from '~/components/Icons';
-//import icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faSignIn,
     faEllipsisVertical,
@@ -26,6 +29,7 @@ import {
     faGear,
     faCircleHalfStroke,
     faArrowRightFromBracket,
+    faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 //import Headlesstippy
 //hiển thi chú thích cho các nút (You can call is tooltip)
@@ -35,7 +39,7 @@ import Tippy from '@tippyjs/react';
 
 const cx = classNames.bind(styles);
 
-const currentUser = true;
+const currentUser = false;
 
 const MENU_ITEM = [
     {
@@ -116,6 +120,8 @@ const userMenu = [
 ];
 
 function Header() {
+    const login = useContext(ModalContext);
+
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
@@ -163,8 +169,14 @@ function Header() {
                         // End Search
                         // Button
                         <>
-                            <Button text>Upload</Button>
-                            <Button primary rightIcon={<FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>}>
+                            <Button text leftIcon={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}>
+                                Upload
+                            </Button>
+                            <Button
+                                primary
+                                rightIcon={<FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>}
+                                onClick={login.handleShowModel}
+                            >
                                 Login
                             </Button>
                             {/* Menu Item*/}

@@ -31,7 +31,7 @@
 
 .icon {
     display: inline-block;
-    width: 20px;
+    width: 10px;
 }
 
 .rounded {
@@ -67,9 +67,11 @@
     background-color: var(--primary);
     border: none;
     color: var(--text-color);
+    border: 1px solid;
 
     &:hover {
         text-decoration: underline;
+        background-color: rgba(254, 44, 85, 0.6);
     }
 }
 
