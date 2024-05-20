@@ -3,7 +3,7 @@ import { useState, createContext } from 'react';
 const ModalContext = createContext();
 
 function ModelContextProvider({ children }) {
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
 
     const handleShowModel = () => {
         setActive(true);

@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import Image from '../Image';
 import Button from '../Button';
 import config from '~/config';
 import { MusicIcon, PlayIcon, PauseIcon, VolumeIcon, LoveIcon, CommentIcon, ShareIcon, FlagIcon } from '../Icons';
+import { ModalContext } from '~/components/ModelContextProvider';
 
 import styles from './Video.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +15,7 @@ const cx = classNames.bind(styles);
 
 function Video({ data, className }) {
     const videoRef = useRef();
+    const login = useContext(ModalContext);
 
     const [playing, setPlaying] = useState(false);
 
@@ -58,7 +60,7 @@ function Video({ data, className }) {
                                 <MusicIcon></MusicIcon>
                             </div>
                         </div>
-                        <Button outline className={cx('body-button')}>
+                        <Button outline className={cx('body-button')} onClick={login.handleShowModel}>
                             Follow
                         </Button>
                     </div>

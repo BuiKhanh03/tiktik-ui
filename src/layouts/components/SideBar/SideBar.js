@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import styles from './SideBar.module.scss';
 import Menu, { MenuItem } from './Menu';
 import {
@@ -18,11 +18,13 @@ import {
 import config from '~/config';
 import SuggestedAccounts from '~/layouts/components/SuggestedAccounts/SuggestedAccounts';
 import Button from '~/components/Button';
+import { ModalContext } from '~/components/ModelContextProvider';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function SideBar({ shrink }) {
     const currentUser = false;
+    const login = useContext(ModalContext);
 
     const [suggests, setSuggests] = useState([]);
     const [seeAll, setSeeAll] = useState(false);
@@ -103,7 +105,7 @@ function SideBar({ shrink }) {
                             <p className={cx('login-title')}>
                                 Log in to follow creators, like videos, and view comments.
                             </p>
-                            <Button primary large className="login-button">
+                            <Button primary large className="login-button" onClick={login.handleShowModel}>
                                 Log in
                             </Button>
                         </div>
