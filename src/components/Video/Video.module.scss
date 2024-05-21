@@ -6,7 +6,7 @@
     width: 592px;
     max-width: 592px;
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .header {
@@ -55,7 +55,7 @@
 
 .video {
     display: flex;
-    padding: 20px 0;
+    padding: 8px 0;
     align-items: flex-end;
 }
 .video-card {
@@ -113,12 +113,24 @@
         }
 
         input {
+            -webkit-appearance: none;
             height: 2px;
             width: 46px;
+            background-color: #fff;
+            -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);
             position: absolute;
             bottom: 26px;
             right: -12px;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 12px;
+                height: 12px;
+                background-color: #fff;
+                border-radius: 50%;
+                cursor: pointer;
+            }
         }
     }
 
