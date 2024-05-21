@@ -18,7 +18,7 @@ import {
 import config from '~/config';
 import SuggestedAccounts from '~/layouts/components/SuggestedAccounts/SuggestedAccounts';
 import Button from '~/components/Button';
-import { ModalContext } from '~/components/ModelContextProvider';
+import { ModalContext } from '~/components/ModalContextProvider';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);

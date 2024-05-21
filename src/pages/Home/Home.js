@@ -33,7 +33,7 @@ function Home() {
 
     return (
         <div>
-            {videos.map((video) => (
+            {videos.map((video, key) => (
                 <Video
                     data={video}
                     handleVolume={handleVolume}

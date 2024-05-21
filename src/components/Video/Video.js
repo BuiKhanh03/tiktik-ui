@@ -5,7 +5,7 @@ import Image from '../Image';
 import Button from '../Button';
 import config from '~/config';
 import { MutedIcon } from '~/components/Icons';
-import { ModalContext } from '~/components/ModelContextProvider';
+import { ModalContext } from '~/components/ModalContextProvider';
 import { MusicIcon, PlayIcon, PauseIcon, VolumeIcon, LoveIcon, CommentIcon, ShareIcon } from '../Icons';
 
 import styles from './Video.module.scss';

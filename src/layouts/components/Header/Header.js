@@ -13,7 +13,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
-import { ModalContext } from '~/components/ModelContextProvider';
+import { ModalContext } from '~/components/ModalContextProvider';
 import BuiKhanhHandsome from '~/assets/images/BuiKhanhHandsome.jpg';
 import {
     faSignIn,

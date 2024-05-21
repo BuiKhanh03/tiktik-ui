@@ -4,9 +4,10 @@ import classNames from 'classnames/bind';
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
 import styles from './DefaultLayout.module.scss';
-import { Fragment } from 'react';
-import { ModalContext } from '~/components/ModelContextProvider';
 import Login from '~/components/Login';
+import GetApp from '~/components/GetApp';
+import { Fragment } from 'react';
+import { ModalContext } from '~/components/ModalContextProvider';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +21,7 @@ function DefaultLayout({ children }) {
                 <div className={cx('container')}>
                     <SideBar></SideBar>
                     <div className={cx('content')}>{children}</div>
+                    <GetApp />
                 </div>
                 {login.active && <Login onHide={login.handleHideModel}></Login>}
             </div>

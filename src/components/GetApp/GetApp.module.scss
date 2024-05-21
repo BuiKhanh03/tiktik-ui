@@ -1,0 +1,90 @@
+.wrapper {
+    position: fixed;
+    bottom: 40px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.container {
+    margin-bottom: 10px;
+}
+
+.btn-getApp {
+    min-width: 90px;
+    height: 32px;
+    color: rgba(22, 24, 35, 0.75);
+    background-color: var(--white);
+    border-radius: 10px;
+    outline: none;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 0 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    cursor: pointer;
+    line-height: 30px;
+    white-space: nowrap;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    width: 100%;
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.tippy-wrapper {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0.14, 0.3, 1) 0s;
+    transform-origin: right bottom;
+    transform: none;
+}
+.tippy-inner {
+    margin-bottom: 4px;
+}
+
+.tippy-btn {
+    display: flex;
+    align-items: center;
+    min-width: 90px;
+    height: 42px;
+    color: rgba(22, 24, 35, 0.75);
+    background-color: var(--white);
+    border-radius: 10px;
+    outline: none;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 0 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    margin-bottom: 2px;
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.tippy-close {
+    position: absolute;
+    top: -6px;
+    right: 2px;
+    color: VAR(--white);
+    cursor: pointer;
+}
+
+.back-to-top {
+    border: none;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 400ms cubic-bezier(0.65, 0, 0.35, 1);
+}

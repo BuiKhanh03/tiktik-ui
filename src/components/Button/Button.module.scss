@@ -1,19 +1,15 @@
 .wrapper {
     min-width: 90px;
-    margin-right: 2px;
     padding: 9px 16px;
     font-size: 1.6rem;
     font-weight: 700;
     font-family: var(--font-family), sans-serif;
     border-radius: 4px;
+    margin-right: 2px;
     background-color: var(--primary);
     border: 1px solid var(--white);
     user-select: none;
     cursor: pointer;
-
-    + .wrapper {
-        margin-left: 2px;
-    }
 
     &.disabled {
         //mất hiệu ứng chuột, clean qua thì không có hiệu ứng gì hết
